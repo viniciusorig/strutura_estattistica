@@ -16,6 +16,8 @@ float desvio(struct cabeca *c);
 float media(struct cabeca *c);
 float padroniza(float x, struct cabeca *c);
 char * result(float x, struct cabeca *c);
-float search_in_z_matrix(float x);
+float matriz_z(float x);
+int *localiza(int x);
+int localizacao(int x);
 
 #endif

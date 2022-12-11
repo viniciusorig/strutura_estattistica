@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "../include/double_list.h"
+#include "../include/tree.h"
 
 struct aluno
 {
@@ -245,7 +245,7 @@ result(float x, struct cabeca *c)
 }
 
 float
-search_in_z_matrix(float x)
+matriz_z(float x)
 {
   char *cadeia = (char*)malloc(5*sizeof(char));
   gcvt(x, 4, cadeia);
@@ -273,3 +273,52 @@ search_in_z_matrix(float x)
   }
 }
 
+int *
+localiza(int x)
+{
+  int *a = (int *)malloc(sizeof(int)*2);
+  int local = 0;
+  if (x >= positive_zmatrix[0][0])
+  {
+    for(int i = 0; i < 40; i++)
+    {
+      for(int j = 0; j < 10; j++)
+      {
+        local = (int)100*positive_zmatrix[i][j];
+        if(local == x)
+        {
+          a[0] = i;
+          a[1] = j;
+          
+          return a;
+        }
+      }
+    }
+  }
+  else
+  {
+    for(int i = 0; i < 40; i++)
+    {
+      for(int j = 0; j < 10; j++)
+      {
+        local = (int)100*negative_zmatrix[i][j];
+        if(local == x)
+        {
+          a[0] = i;
+          a[1] = j;
+          
+          return a;
+        }
+      }
+    }
+  }
+}
+
+int 
+localizacao(int x)
+{
+  int *c = localiza(x);
+  int n = (c[0]*10 )+ c[1];
+
+  return n;
+}
